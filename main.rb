@@ -17,8 +17,8 @@ def fifo(cache, mem_refs)
 				first_index = (first_index + 1) % cache.size
 			end
 		end
-		print_cache(cache, misses, hits)	
 	end	
+	print_cache(cache, misses, hits)	
 end	
 
 def lru(cache, mem_refs)
@@ -41,16 +41,18 @@ def lru(cache, mem_refs)
 			end
 		end
 		count.map! { |c| c += 1 }
-		print_cache(cache, misses, hits)	
 	end
+	print_cache(cache, misses, hits)	
 end	
 
 def lfu(cache, mem_refs)
 	# TODO: 
+	puts "LFU não implementado!"
 end
 
 def random(cache, mem_refs)
 	# TODO: 
+	puts "Random não implementado!"
 end	
 
 def print_cache(cache, misses, hits)
@@ -59,8 +61,7 @@ def print_cache(cache, misses, hits)
 		puts "|  #{index}  |  #{value}  |"		
 	end
 	puts('-------------')
-	print("Misses: #{misses}, Hits: #{hits}")
-	puts
+	puts("Misses: #{misses}, Hits: #{hits}")
 end	
 
 path = ''
@@ -88,8 +89,10 @@ if algorithm.upcase == 'FIFO'
 	fifo(cache, mem_refs)
 elsif algorithm.upcase == 'LRU'
 	lru(cache, mem_refs)
+elsif algorithm.upcase == 'LFU'
+	lfu(cache, mem_refs)
+elsif algorithm.upcase == 'RANDOM'
+	random(cache, mem_refs)
 else
 	puts 'Error: Algoritmo invalido!'
 end
-
-
