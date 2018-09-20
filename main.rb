@@ -43,6 +43,31 @@ def print_cache(cache, misses, hits)
 	puts
 end	
 
-mem_refs = File.readlines('tests/example2.txt').map(&:to_i)
-cache = [-1] * 4
-fifo(cache, mem_refs)
+path = ''
+if ARGV.include?('--path')
+	value_index = ARGV.index('--path') + 1
+	path = ARGV[value_index]
+end
+
+cache_size = 1
+if ARGV.include?('--size')
+	value_index = ARGV.index('--size') + 1
+	cache_size = ARGV[value_index].to_i
+end
+
+algorithm = 1
+if ARGV.include?('--algorithm')
+	value_index = ARGV.index('--algorithm') + 1
+	algorithm = ARGV[value_index]
+end
+
+mem_refs = File.readlines(path).map(&:to_i)
+cache = [-1] * cache_size
+
+if algorithm == 'FIFO'
+	fifo(cache, mem_refs)
+else
+	puts 'Error: Algoritmo invalido!'
+end
+
+

@@ -16,3 +16,10 @@ arquivo. O simulador da como retorno, para cada política de substituição:
 * A cada novo armazenamento na memória cache, a lista todas as páginas armazenadas na
 memória cache;
 * Ao final da execução, a fração de acertos às referências de memória.
+
+## Executando 
+
+Para executar os testes basta ecolher o tamanho da cache, o algoritmo (FIFO, LRU, LFU ou RANDOM)
+e passar o caminho do arquivo txt com os dados. Por exemplo:
+
+`ruby main.rb --path tests/example2.txt --size 4 --algorithm FIFO`
