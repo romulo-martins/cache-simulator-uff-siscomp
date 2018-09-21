@@ -46,8 +46,28 @@ def lru(cache, mem_refs)
 end	
 
 def lfu(cache, mem_refs)
-	# TODO: 
-	puts "LFU não implementado!"
+	misses = 0
+	hits = 0
+	hit_count = [0] * cache.size
+	mem_refs.each do |value|
+		if cache.include?(value)
+			hits += 1
+			value_index = cache.index(value)
+			hit_count[value_index] += 1
+		else
+			misses += 1
+			if cache.include?(-1)
+				empty_index = cache.index(-1)
+				cache[empty_index] = value
+				hit_count[empty_index] += 1
+			else
+				min_hit_index = hit_count.index(hit_count.min)
+				cache[min_hit_index] = value
+				hit_count[min_hit_index] = 0
+			end	
+		end
+	end	
+	print_cache(cache, misses, hits)
 end
 
 def random(cache, mem_refs)
