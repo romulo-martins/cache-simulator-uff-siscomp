@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+EMPTY = -1
+
 # Vou refatorar, calma!
 def fifo(cache, mem_refs)
 	misses = 0
@@ -10,8 +12,8 @@ def fifo(cache, mem_refs)
 			hits += 1
 		else
 			misses += 1
-			if cache.include?(-1)
-				cache[cache.index(-1)] = value
+			if cache.include?(EMPTY)
+				cache[cache.index(EMPTY)] = value
 			else
 				cache[first_index] = value
 				first_index = (first_index + 1) % cache.size
@@ -32,8 +34,8 @@ def lru(cache, mem_refs)
 			count[value_index] = 0
 		else
 			misses += 1
-			if cache.include?(-1)
-				cache[cache.index(-1)] = value
+			if cache.include?(EMPTY)
+				cache[cache.index(EMPTY)] = value
 			else
 				count_index = count.index(count.max)
 				cache[count_index] = value
@@ -56,14 +58,14 @@ def lfu(cache, mem_refs)
 			hit_count[value_index] += 1
 		else
 			misses += 1
-			if cache.include?(-1)
-				empty_index = cache.index(-1)
+			if cache.include?(EMPTY)
+				empty_index = cache.index(EMPTY)
 				cache[empty_index] = value
 				hit_count[empty_index] += 1
 			else
 				min_hit_index = hit_count.index(hit_count.min)
 				cache[min_hit_index] = value
-				hit_count[min_hit_index] = 0
+				hit_count[min_hit_index] = 1
 			end	
 		end
 	end	
