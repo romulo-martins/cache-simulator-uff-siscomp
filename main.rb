@@ -73,9 +73,24 @@ def lfu(cache, mem_refs)
 end
 
 def random(cache, mem_refs)
-	# TODO: 
-	puts "Random não implementado!"
-end	
+	misses = 0
+	hits = 0
+	mem_refs.each do |value|
+		if cache.include?(value)
+			hits += 1
+		else
+			misses += 1
+			if cache.include?(EMPTY)
+				empty_index = cache.index(EMPTY)
+				cache[empty_index] = value
+			else
+				random_index = rand(0..cache.size) % cache.size
+				cache[random_index] = value
+			end	
+		end	
+	end
+	print_cache(cache, misses, hits)
+end
 
 def print_cache(cache, misses, hits)
 	puts("--- Cache ---")
