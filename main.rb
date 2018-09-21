@@ -20,7 +20,7 @@ def fifo(cache, mem_refs)
 			end
 		end
 	end	
-	print_cache(cache, misses, hits)	
+	print_cache(cache, misses, hits)
 end	
 
 def lru(cache, mem_refs)
