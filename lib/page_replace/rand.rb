@@ -1,5 +1,5 @@
-class Random < Algorithm
-	def execute(mem_refs)
+class Rand < Algorithm
+	def execute(mem_refs = [])
 		mem_refs.each do |value|
 			if cache.frames.include?(value)
 				@hits += 1

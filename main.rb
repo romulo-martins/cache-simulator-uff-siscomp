@@ -1,39 +1,23 @@
-require_relative 'lib/cache'
-require_relative 'lib/algorithm'
-require_relative 'lib/fifo'
-require_relative 'lib/lru'
-require_relative 'lib/lfu'
-require_relative 'lib/random'
+require_relative 'initializer'
 
-path = ''
-if ARGV.include?('--path')
-	value_index = ARGV.index('--path') + 1
-	path = ARGV[value_index]
-end
-
-cache_size = 1
-if ARGV.include?('--size')
-	value_index = ARGV.index('--size') + 1
-	cache_size = ARGV[value_index].to_i
-end
-
-algorithm = ''
-if ARGV.include?('--algorithm')
-	value_index = ARGV.index('--algorithm') + 1
-	algorithm = ARGV[value_index]
-end
+args_reader = ArgsReader.new(ARGV)
+path = args_reader.get_path
+cache_size = args_reader.get_cache_size
+algorithm_name = args_reader.get_algorithm
 
 mem_refs = File.readlines(path).map(&:to_i)
 cache = Cache.new(cache_size)
 
-if algorithm.upcase == 'FIFO'
+if algorithm_name.upcase == 'FIFO'
 	algorithm = Fifo.new(cache)
-elsif algorithm.upcase == 'LRU'
+elsif algorithm_name.upcase == 'LRU'
 	algorithm = Lru.new(cache)
-elsif algorithm.upcase == 'LFU'
+elsif algorithm_name.upcase == 'LFU'
 	algorithm = Lfu.new(cache)
-elsif algorithm.upcase == 'RANDOM'
-	algorithm = Random.new(cache)
+elsif algorithm_name.upcase == 'RANDOM'
+	algorithm = Rand.new(cache)
+else
+	puts "Algoritmo não reconhecido!"	
 end
 
 if algorithm
