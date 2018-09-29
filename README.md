@@ -69,12 +69,12 @@ Fault Rate: 0.75
 `
 
 `
-===== LRU =====
-2
-0
-1
-3
-Misses: 8
+===== LRU =====\n
+2 \n
+0 \n
+1 \n
+3 \n
+Misses: 8 \n
 Fault Rate: 0.67
 `
 
