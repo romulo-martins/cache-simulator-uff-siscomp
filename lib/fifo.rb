@@ -1,12 +1,4 @@
-class Fifo
-	attr_reader :misses, :hits
-
-	def initialize(cache)
-		@cache = cache
-		@misses = 0
-		@hits = 0
-	end
-
+class Fifo < Algorithm
 	def execute(mem_refs = [])
 		first_index = 0
 		mem_refs.each do |value|
@@ -24,8 +16,4 @@ class Fifo
 			end
 		end	
 	end
-
-	private 
-
-	attr_accessor :cache
 end

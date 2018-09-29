@@ -1,4 +1,5 @@
 require_relative 'lib/cache'
+require_relative 'lib/algorithm'
 require_relative 'lib/fifo'
 require_relative 'lib/lru'
 require_relative 'lib/lfu'
@@ -40,6 +41,4 @@ if algorithm
 end
 
 puts cache
-puts("Misses: #{algorithm.misses}")
-puts("Hits: #{algorithm.hits}")
-puts("Hits: #{algorithm.ratio}")
+puts algorithm

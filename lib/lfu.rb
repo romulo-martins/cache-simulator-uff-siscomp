@@ -1,12 +1,4 @@
-class Lfu
-	attr_reader :misses, :hits
-
-	def initialize(cache)
-		@cache = cache
-		@misses = 0
-		@hits = 0
-	end	
-
+class Lfu < Algorithm
 	def execute(mem_refs = [])
 		hit_count = [0] * cache.size
 		mem_refs.each do |value|
@@ -19,7 +11,7 @@ class Lfu
 				if cache.frames.include?(Cache::EMPTY_FRAME)
 					empty_frame_index = cache.frames.index(Cache::EMPTY_FRAME)
 					cache.frames[empty_frame_index] = value
-					hit_count[empty_index] += 1
+					hit_count[empty_frame_index] += 1
 				else
 					min_hit_index = hit_count.index(hit_count.min)
 					cache.frames[min_hit_index] = value
@@ -28,8 +20,4 @@ class Lfu
 			end
 		end	
 	end
-
-	private 
-
-	attr_reader :cache
 end

@@ -1,12 +1,4 @@
-class Random
-	attr_reader :misses, :hits
-
-	def initialize(cache)
-		@cache = cache
-		@misses = 0
-		@hits = 0
-	end
-
+class Random < Algorithm
 	def execute(mem_refs)
 		mem_refs.each do |value|
 			if cache.frames.include?(value)
@@ -23,8 +15,4 @@ class Random
 			end	
 		end
 	end
-
-	private 
-
-	attr_reader :cache
 end

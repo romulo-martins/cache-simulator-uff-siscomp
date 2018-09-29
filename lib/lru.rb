@@ -1,12 +1,4 @@
-class Lru
-	attr_reader :misses, :hits
-
-	def initialize(cache)
-		@cache = cache
-		@misses = 0
-		@hits = 0
-	end
-
+class Lru < Algorithm
 	def execute(mem_refs = [])
 		count = [0] * cache.size
 		mem_refs.each do |value|
@@ -28,8 +20,4 @@ class Lru
 			count.map! { |c| c += 1 }
 		end
 	end
-
-	private 
-
-	attr_reader :cache
 end
