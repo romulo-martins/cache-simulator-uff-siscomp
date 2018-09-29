@@ -41,7 +41,7 @@ Para realizar testes, foram criados arquivos `.txt` com um inteiro por linha que
 
 Exemplo do arquivo de entrada `in1.txt`:
 
-`
+``
 0 
 2 
 1 
@@ -54,11 +54,11 @@ Exemplo do arquivo de entrada `in1.txt`:
 1 
 2 
 1
-`
+``
 
 Exemplo do arquivo de saidas esperadas `out1.txt`:
 
-`
+``
 ===== FIFO ======
 2
 0
@@ -66,17 +66,17 @@ Exemplo do arquivo de saidas esperadas `out1.txt`:
 1
 Misses: 9
 Fault Rate: 0.75
-`
+``
 
-`
-===== LRU =====\n
-2 \n
-0 \n
-1 \n
-3 \n
-Misses: 8 \n
+``
+===== LRU =====
+2 
+0
+1
+3
+Misses: 8
 Fault Rate: 0.67
-`
+``
 
 
 ## Referências
