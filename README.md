@@ -17,9 +17,23 @@ arquivo. O simulador da como retorno, para cada política de substituição:
 memória cache;
 * Ao final da execução, a fração de acertos às referências de memória.
 
-## Executando 
 
-Para executar os testes basta ecolher o tamanho da cache, o algoritmo (FIFO, LRU, LFU ou RANDOM)
-e passar o caminho do arquivo txt com os dados. Por exemplo:
+## Implementação
+
+A implementação foi feita atraves da linguagem de programação ruby. Que é uma linguagem interpretada multiparadigma.
+
+### Parametros
+
+`--size` Representa o tamanho da cache.
+`--algorithm` Representa o algoritmo de substituição de página escolhido, para o caso de mapeamento associativo, os algoritmos podem ser: FIFO, LRU, LFU ou RANDOM. No caso de mapeamento direto este parametro é ignorado.
+`--path` Representa o caminho relativo ao arquivo de teste, que é um `.txt` com inteiros.
+`--mapping` Representa o tipo de mapeamento, podendo ser direto ou associativo {DIRECT, ASSOCIATIVE}.
+
+### Executando 
+
+Para executar os testes basta ecolher o tamanho da cache, o algoritmo e passar o caminho do arquivo txt com os dados. Por exemplo:
 
 `ruby main.rb --path tests/example2.txt --size 4 --algorithm FIFO`
+
+## Referências
+* https://pt.wikipedia.org/wiki/Ruby_(linguagem_de_programa%C3%A7%C3%A3o)
