@@ -40,4 +40,6 @@ if algorithm
 end
 
 puts cache
-puts("Misses: #{algorithm.misses}, Hits: #{algorithm.hits}")
+puts("Misses: #{algorithm.misses}")
+puts("Hits: #{algorithm.hits}")
+puts("Hits: #{algorithm.ratio}")

@@ -19,13 +19,5 @@ Fault Rate: 0.75
 Misses: 12
 Fault Rate: 0.60
 
-===== LFU =====
-2
-0
-1
-Misses: 
-Fault Rate:
-
 Referencia:
-* https://pt.scribd.com/doc/73808713/Simulation-FIFO-LFU-and-MFU-Page-Replacement-Algorithms-VB-by-Shaify-Mehta
 * https://www.cs.utah.edu/~mflatt/past-courses/cs5460/lecture10.pdf

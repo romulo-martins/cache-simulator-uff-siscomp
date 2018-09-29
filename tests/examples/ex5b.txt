@@ -22,4 +22,5 @@ Misses: 8
 Fault Rate: 0.67
 
 Referencia:
-https://www.cs.utah.edu/~mflatt/past-courses/cs5460/lecture10.pdf
+* https://www.cs.utah.edu/~mflatt/past-courses/cs5460/lecture10.pdf
+* http://www2.ic.uff.br/~simone/scminter/contaulas/13_MEMV.pdf

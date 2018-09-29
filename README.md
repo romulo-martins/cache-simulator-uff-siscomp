@@ -37,11 +37,11 @@ Para executar os testes basta ecolher o tamanho da cache, o algoritmo e passar o
 
 ### Testes
 
-Para realizar testes, foram criados arquivos `.txt` com um inteiro por linha que estão na pasta `inputs`. As entradas foram escolhidas com base em slides de aulas de diversas universidades, para realizar a comparação entre as saidas do script com as das aulas. Para facilitar a comparação foi  criados arquivos com as saidas esperadas que estão na pasta `outputs`.
+Para realizar testes, foram criados arquivos `.txt` com um inteiro por linha que estão na pasta `inputs`. As entradas foram escolhidas com base em slides de aulas de diversas universidades, para realizar a comparação entre as saidas do script com as das aulas. 
 
 Exemplo do arquivo de entrada `in1.txt`:
 
-``
+```
 0 
 2 
 1 
@@ -54,30 +54,38 @@ Exemplo do arquivo de entrada `in1.txt`:
 1 
 2 
 1
-``
+```
 
-Exemplo do arquivo de saidas esperadas `out1.txt`:
+Para facilitar a comparação foi  criados arquivos com as entradas e saidas esperadas que estão na pasta `examples`.
+Exemplo do arquivo de saidas esperadas `ex1.txt`:
 
-``
-===== FIFO ======
+```
+Entrada:
+0 2 1 6 4 0 1 0 3 1 2 1
+
+Cache:
+4
+
+Saida:
+===== FIFO =====
 2
 0
 3
 1
 Misses: 9
 Fault Rate: 0.75
-``
 
-``
 ===== LRU =====
-2 
+2
 0
 1
 3
 Misses: 8
 Fault Rate: 0.67
-``
 
+Referencia: 
+http://www.idc-online.com/technical_references/pdfs/information_technology/Page_Replacement_Algorithms.pdf
+```
 
 ## Referências
 * https://pt.wikipedia.org/wiki/Ruby_(linguagem_de_programa%C3%A7%C3%A3o)

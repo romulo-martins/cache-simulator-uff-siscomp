@@ -1,0 +1,24 @@
+Entrada:
+7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 
+
+Cache:
+3
+
+Saida:
+===== LRU =====
+1
+3
+2
+Misses: 10
+Fault Rate: 0.67
+
+===== LFU =====
+3
+0
+2
+Misses: 10
+Fault Rate: 0.67
+
+Referencia: 
+* https://www.youtube.com/watch?v=4wVp97-uqr0
+* https://www.youtube.com/watch?v=uL0xP57negc
