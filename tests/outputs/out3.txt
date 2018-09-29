@@ -1,0 +1,25 @@
+Entrada:
+1 2 3 4 1 2 5 1 2 3 4 5
+
+Cache:
+4
+
+Saida:
+===== FIFO =====
+4
+5
+2
+3
+Misses: 10
+Fault Rate: 0.83
+
+===== LRU =====
+5
+2
+4
+3
+Misses: 8
+Fault Rate: 0.67 
+
+Referencia:
+https://www.cs.columbia.edu/~junfeng/12sp-w4118/lectures/l19-vm.pdf

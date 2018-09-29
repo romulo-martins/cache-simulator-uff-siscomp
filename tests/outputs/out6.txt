@@ -1,0 +1,31 @@
+Entrada:
+7 0 1 2 0 3 0 4 2 3 0 3 2 1 2 0 1 7 0 1
+
+Cache:
+3
+
+Saida:
+===== FIFO =====
+7
+0
+1
+Misses: 15
+Fault Rate: 0.75
+
+===== LRU =====
+1
+0
+7
+Misses: 12
+Fault Rate: 0.60
+
+===== LFU =====
+2
+0
+1
+Misses: 
+Fault Rate:
+
+Referencia:
+* https://pt.scribd.com/doc/73808713/Simulation-FIFO-LFU-and-MFU-Page-Replacement-Algorithms-VB-by-Shaify-Mehta
+* https://www.cs.utah.edu/~mflatt/past-courses/cs5460/lecture10.pdf

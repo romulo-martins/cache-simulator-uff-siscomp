@@ -1,105 +1,8 @@
-#!/usr/bin/ruby
-
-EMPTY = -1
-
-# Vou refatorar, calma!
-def fifo(cache, mem_refs)
-	misses = 0
-	hits = 0
-	first_index = 0
-	mem_refs.each do |value|
-		if cache.include?(value) 
-			hits += 1
-		else
-			misses += 1
-			if cache.include?(EMPTY)
-				cache[cache.index(EMPTY)] = value
-			else
-				cache[first_index] = value
-				first_index = (first_index + 1) % cache.size
-			end
-		end
-	end	
-	print_cache(cache, misses, hits)
-end	
-
-def lru(cache, mem_refs)
-	misses = 0
-	hits = 0
-	count = [0] * cache.size
-	mem_refs.each do |value|
-		if cache.include?(value) 
-			hits += 1
-			value_index = cache.index(value)
-			count[value_index] = 0
-		else
-			misses += 1
-			if cache.include?(EMPTY)
-				cache[cache.index(EMPTY)] = value
-			else
-				count_index = count.index(count.max)
-				cache[count_index] = value
-				count[count_index] = 0
-			end
-		end
-		count.map! { |c| c += 1 }
-	end
-	print_cache(cache, misses, hits)	
-end	
-
-def lfu(cache, mem_refs)
-	misses = 0
-	hits = 0
-	hit_count = [0] * cache.size
-	mem_refs.each do |value|
-		if cache.include?(value)
-			hits += 1
-			value_index = cache.index(value)
-			hit_count[value_index] += 1
-		else
-			misses += 1
-			if cache.include?(EMPTY)
-				empty_index = cache.index(EMPTY)
-				cache[empty_index] = value
-				hit_count[empty_index] += 1
-			else
-				min_hit_index = hit_count.index(hit_count.min)
-				cache[min_hit_index] = value
-				hit_count[min_hit_index] = 1
-			end	
-		end
-	end	
-	print_cache(cache, misses, hits)
-end
-
-def random(cache, mem_refs)
-	misses = 0
-	hits = 0
-	mem_refs.each do |value|
-		if cache.include?(value)
-			hits += 1
-		else
-			misses += 1
-			if cache.include?(EMPTY)
-				empty_index = cache.index(EMPTY)
-				cache[empty_index] = value
-			else
-				random_index = rand(0..cache.size) % cache.size
-				cache[random_index] = value
-			end	
-		end	
-	end
-	print_cache(cache, misses, hits)
-end
-
-def print_cache(cache, misses, hits)
-	puts("--- Cache ---")
-	cache.each_with_index do |value, index|
-		puts "|  #{index}  |  #{value}  |"		
-	end
-	puts('-------------')
-	puts("Misses: #{misses}, Hits: #{hits}")
-end	
+require_relative 'lib/cache'
+require_relative 'lib/fifo'
+require_relative 'lib/lru'
+require_relative 'lib/lfu'
+require_relative 'lib/random'
 
 path = ''
 if ARGV.include?('--path')
@@ -120,16 +23,21 @@ if ARGV.include?('--algorithm')
 end
 
 mem_refs = File.readlines(path).map(&:to_i)
-cache = [-1] * cache_size
+cache = Cache.new(cache_size)
 
 if algorithm.upcase == 'FIFO'
-	fifo(cache, mem_refs)
+	algorithm = Fifo.new(cache)
 elsif algorithm.upcase == 'LRU'
-	lru(cache, mem_refs)
+	algorithm = Lru.new(cache)
 elsif algorithm.upcase == 'LFU'
-	lfu(cache, mem_refs)
+	algorithm = Lfu.new(cache)
 elsif algorithm.upcase == 'RANDOM'
-	random(cache, mem_refs)
-else
-	puts 'Error: Algoritmo invalido!'
+	algorithm = Random.new(cache)
 end
+
+if algorithm
+	algorithm.execute(mem_refs)
+end
+
+puts cache
+puts("Misses: #{algorithm.misses}, Hits: #{algorithm.hits}")

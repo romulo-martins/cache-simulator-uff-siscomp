@@ -24,16 +24,60 @@ A implementação foi feita atraves da linguagem de programação ruby. Que é u
 
 ### Parametros
 
-`--size` Representa o tamanho da cache.
-`--algorithm` Representa o algoritmo de substituição de página escolhido, para o caso de mapeamento associativo, os algoritmos podem ser: FIFO, LRU, LFU ou RANDOM. No caso de mapeamento direto este parametro é ignorado.
-`--path` Representa o caminho relativo ao arquivo de teste, que é um `.txt` com inteiros.
-`--mapping` Representa o tipo de mapeamento, podendo ser direto ou associativo {DIRECT, ASSOCIATIVE}.
+* `--size` Representa o tamanho da cache.
+* `--algorithm` Representa o algoritmo de substituição de página escolhido, para o caso de mapeamento associativo, os algoritmos podem ser: FIFO, LRU, LFU ou RANDOM. No caso de mapeamento direto este parametro é ignorado.
+* `--path` Representa o caminho relativo ao arquivo de teste, que é um `.txt` com inteiros.
+* `--mapping` Representa o tipo de mapeamento, podendo ser direto ou associativo: DIRECT ou ASSOCIATIVE.
 
 ### Executando 
 
 Para executar os testes basta ecolher o tamanho da cache, o algoritmo e passar o caminho do arquivo txt com os dados. Por exemplo:
 
-`ruby main.rb --path tests/example2.txt --size 4 --algorithm FIFO`
+`ruby main.rb --path tests/inputs/in1.txt --size 4 --algorithm FIFO --mapping ASSOCIATIVE`
+
+### Testes
+
+Para realizar testes, foram criados arquivos `.txt` com um inteiro por linha que estão na pasta `inputs`. As entradas foram escolhidas com base em slides de aulas de diversas universidades, para realizar a comparação entre as saidas do script com as das aulas. Para facilitar a comparação foi  criados arquivos com as saidas esperadas que estão na pasta `outputs`.
+
+Exemplo do arquivo de entrada `in1.txt`:
+
+`
+0 
+2 
+1 
+6 
+4 
+0 
+1 
+0 
+3
+1 
+2 
+1
+`
+
+Exemplo do arquivo de saidas esperadas `out1.txt`:
+
+`
+===== FIFO ======
+2
+0
+3
+1
+Misses: 9
+Fault Rate: 0.75
+`
+
+`
+===== LRU =====
+2
+0
+1
+3
+Misses: 8
+Fault Rate: 0.67
+`
+
 
 ## Referências
 * https://pt.wikipedia.org/wiki/Ruby_(linguagem_de_programa%C3%A7%C3%A3o)
