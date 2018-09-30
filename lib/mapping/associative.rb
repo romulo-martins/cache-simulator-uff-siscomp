@@ -26,7 +26,7 @@ module Mapping
 		end
 
 		def to_s
-			"Mapeamento Associativo \n" \
+			"Mapeamento: Associativo \n" \
 			"Algoritmo: #{algorithm_name} \n" \
 			"Misses: #{misses} \n" \
 			"Hits: #{hits} \n" \

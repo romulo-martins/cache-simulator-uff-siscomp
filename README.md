@@ -20,7 +20,8 @@ memória cache;
 
 ## Implementação
 
-A implementação foi feita atraves da linguagem de programação ruby. Que é uma linguagem interpretada multiparadigma.
+A implementação foi feita atraves da linguagem de programação ruby, uma linguagem interpretada multiparadigma.
+Para informações sobre como instalar, tanto em Windows, Linux ou MAC, basta clicar [aqui](https://www.ruby-lang.org/pt/downloads/).
 
 ### Parametros
 
@@ -34,7 +35,23 @@ A implementação foi feita atraves da linguagem de programação ruby. Que é u
 
 Para executar os testes basta ecolher o tamanho da cache, o algoritmo e passar o caminho do arquivo txt com os dados. Por exemplo:
 
+* Comando
 `ruby main.rb --path tests/inputs/in1.txt --size 4 --algorithm FIFO --mapping ASSOCIATIVE`
+
+* Saida
+```
+--- Cache ---
+|  0  |  2  |
+|  1  |  0  |
+|  2  |  3  |
+|  3  |  1  |
+-------------
+Mapeamento: Associativo
+Algoritmo: FIFO
+Misses: 9
+Hits: 3
+Taxa de acertos: 25.0%
+```
 
 ## Testes
 
@@ -87,6 +104,3 @@ Fault Rate: 0.67
 Referencia: 
 http://www.idc-online.com/technical_references/pdfs/information_technology/Page_Replacement_Algorithms.pdf
 ```
-
-## Referências
-* https://pt.wikipedia.org/wiki/Ruby_(linguagem_de_programa%C3%A7%C3%A3o)
