@@ -24,10 +24,11 @@ A implementação foi feita atraves da linguagem de programação ruby. Que é u
 
 ### Parametros
 
-* `--size` Representa o tamanho da cache.
-* `--algorithm` Representa o algoritmo de substituição de página escolhido, para o caso de mapeamento associativo, os algoritmos podem ser: FIFO, LRU, LFU ou RANDOM. No caso de mapeamento direto este parametro é ignorado.
-* `--path` Representa o caminho relativo ao arquivo de teste, que é um `.txt` com inteiros.
-* `--mapping` Representa o tipo de mapeamento, podendo ser direto ou associativo: DIRECT ou ASSOCIATIVE.
+* `--size`: Representa o tamanho da cache.
+* `--algorithm`: Representa o algoritmo de substituição de página escolhido, para o caso de mapeamento associativo, os algoritmos podem ser: `FIFO, LRU, LFU ou RANDOM`. No caso de mapeamento direto este parametro é ignorado.
+* `--path`: Representa o caminho relativo ao arquivo de teste, que é um `.txt` com inteiros.
+* `--mapping`: Representa o tipo de mapeamento, podendo ser direto ou associativo: `DIRECT ou ASSOCIATIVE`.
+* `--set_size`: Representa o tamanho do conjunto para mapeamento associativo por conjunto, caso este parametro não seja passado, então é considerado o mapeamento associativo normal.
 
 ### Executando 
 
@@ -35,7 +36,7 @@ Para executar os testes basta ecolher o tamanho da cache, o algoritmo e passar o
 
 `ruby main.rb --path tests/inputs/in1.txt --size 4 --algorithm FIFO --mapping ASSOCIATIVE`
 
-### Testes
+## Testes
 
 Para realizar testes, foram criados arquivos `.txt` com um inteiro por linha que estão na pasta `inputs`. As entradas foram escolhidas com base em slides de aulas de diversas universidades, para realizar a comparação entre as saidas do script com as das aulas. 
 

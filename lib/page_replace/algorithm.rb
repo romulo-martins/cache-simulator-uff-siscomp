@@ -22,5 +22,5 @@ class Algorithm
 
 	def page_fault_rate
 		(misses.to_f / (hits + misses).to_f).round(2)
-	end	
+	end
 end

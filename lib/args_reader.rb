@@ -27,6 +27,12 @@ class ArgsReader
 		args[value_index]
 	end
 
+	def get_set_size
+		return 0 unless args.include?('--set_size')
+		value_index = args.index('--set_size') + 1
+		args[value_index].to_i
+	end
+
 	private
 
 	attr_reader :args
