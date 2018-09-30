@@ -36,7 +36,9 @@ Para informações sobre como instalar, tanto em Windows, Linux ou MAC, basta cl
 Para executar os testes basta ecolher o tamanho da cache, o algoritmo e passar o caminho do arquivo txt com os dados. Por exemplo:
 
 * Comando
-`ruby main.rb --path tests/inputs/in1.txt --size 4 --algorithm FIFO --mapping ASSOCIATIVE`
+```
+ruby main.rb --path tests/inputs/in1.txt --size 4 --algorithm FIFO --mapping ASSOCIATIVE
+```
 
 * Saida
 ```
