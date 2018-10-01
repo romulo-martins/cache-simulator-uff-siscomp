@@ -21,7 +21,7 @@ module Mapping
 		end
 
 		def to_s
-			"Mapeamento Direto \n" \
+			"Mapeamento: Direto \n" \
 			"Misses: #{misses} \n" \
 			"Hits: #{hits} \n" \
 			"Taxa de acertos: #{hits_rate}% \n"

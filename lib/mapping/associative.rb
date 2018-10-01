@@ -4,30 +4,21 @@ module Mapping
 
 		def initialize(cache, algorithm_name)
 			@cache = cache
-			@algorithm_name = algorithm_name
+			@algorithm = load_algorithm(algorithm_name)
 		end	
 
 		def execute(mem_refs)
-			if algorithm_name.upcase == 'FIFO'
-				algorithm = Fifo.new(cache)
-			elsif algorithm_name.upcase == 'LRU'
-				algorithm = Lru.new(cache)
-			elsif algorithm_name.upcase == 'LFU'
-				algorithm = Lfu.new(cache)
-			elsif algorithm_name.upcase == 'RANDOM'
-				algorithm = Rand.new(cache)
-			else
-				puts "Algoritmo não reconhecido!"	
-			end
 			if algorithm
 				algorithm.execute(mem_refs)
 				load_result(algorithm)
+			else 
+				puts "Algoritmo não reconhecido!"	
 			end	
 		end
 
 		def to_s
 			"Mapeamento: Associativo \n" \
-			"Algoritmo: #{algorithm_name} \n" \
+			"Algoritmo: #{algorithm} \n" \
 			"Misses: #{misses} \n" \
 			"Hits: #{hits} \n" \
 			"Taxa de acertos: #{hits_rate}% \n"
@@ -35,7 +26,19 @@ module Mapping
 
 		private 
 
-		attr_reader :cache, :algorithm_name
+		attr_reader :cache, :algorithm
+
+		def load_algorithm(algorithm_name)
+			if algorithm_name.upcase == 'FIFO'
+				Fifo.new(cache.frames)
+			elsif algorithm_name.upcase == 'LRU'
+				Lru.new(cache.frames)
+			elsif algorithm_name.upcase == 'LFU'
+				Lfu.new(cache.frames)
+			elsif algorithm_name.upcase == 'RANDOM'
+				Rand.new(cache.frames)
+			end	
+		end
 
 		def load_result(algorithm)
 			@hits = algorithm.hits
@@ -43,6 +46,7 @@ module Mapping
 		end	
 
 		def hits_rate
+			return 0 if (hits + misses) == 0
 			((hits.to_f / (hits + misses).to_f) * 100).round(2)
 		end
 	end	

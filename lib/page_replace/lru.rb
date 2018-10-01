@@ -1,23 +1,43 @@
-class Lru < Algorithm
-	def execute(mem_refs = [])
-		count = [0] * cache.size
-		mem_refs.each do |value|
-			if cache.frames.include?(value) 
-				@hits += 1
-				value_index = cache.frames.index(value)
-				count[value_index] = 0
+class Lru
+	attr_reader :hits, :misses
+
+	def initialize(frames)
+		@frames = frames
+		@hits = 0
+		@misses = 0
+		@count = [0] * frames.size
+	end	
+
+	def add(mem_ref)
+		if frames.include?(mem_ref) 
+			@hits += 1
+			value_index = frames.index(mem_ref)
+			@count[value_index] = 0
+		else
+			@misses += 1
+			if frames.include?(Cache::EMPTY_FRAME)
+				empty_frame_index = frames.index(Cache::EMPTY_FRAME)
+				frames[empty_frame_index] = mem_ref
 			else
-				@misses += 1
-				if cache.frames.include?(Cache::EMPTY_FRAME)
-					empty_frame_index = cache.frames.index(Cache::EMPTY_FRAME)
-					cache.frames[empty_frame_index] = value
-				else
-					count_index = count.index(count.max)
-					cache.frames[count_index] = value
-					count[count_index] = 0
-				end
+				count_index = @count.index(@count.max)
+				frames[count_index] = mem_ref
+				@count[count_index] = 0
 			end
-			count.map! { |c| c += 1 }
+		end
+		@count.map! { |c| c += 1 }
+	end	
+
+	def execute(mem_refs = [])
+		mem_refs.each do |mem_ref|
+			add(mem_ref)
 		end
 	end
+
+	def to_s
+		'LRU'
+	end	
+
+	private
+
+	attr_reader :frames
 end
