@@ -42,17 +42,19 @@ ruby main.rb --path tests/inputs/in1.txt --size 4 --algorithm FIFO --mapping ASS
 
 * Saida
 ```
---- Cache ---
-|  0  |  2  |
-|  1  |  0  |
-|  2  |  3  |
-|  3  |  1  |
--------------
-Mapeamento: Associativo
-Algoritmo: FIFO
-Misses: 9
-Hits: 3
-Taxa de acertos: 25.0%
+-------- Cache --------
+ Pos Cache | Mem. Ref. 
+-----------------------
+|         0|         2|
+|         1|         0|
+|         2|         3|
+|         3|         1|
+-----------------------
+Mapeamento: Associativo 
+Algoritmo: FIFO 
+Misses: 9 
+Hits: 3 
+Taxa de acertos: 25.0% 
 ```
 
 ## Testes
